@@ -39,7 +39,7 @@ with tf.Session() as sess:
 # 使用with代码自动完成关闭动作, 即通过上下文管理器来管理这个会话
 # 当上下文退出时, 会话关闭, 资源释放完成
 
-sess = tf.InteractiveSession()
+sess = tf.Session()
 # 37行等价于(必须先指定会话，即sess = tf.Session())
 with sess.as_default():
     print(node3.eval())
