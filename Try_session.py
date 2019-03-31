@@ -4,6 +4,10 @@
 # ------------------------
 # Jackkii    2019/03/31
 
+# 屏蔽Tensorflow的CPU警告
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
 import tensorflow as tf
 # 一般要加 import numpy as np
 # 一般要加 import matplotlib.pyplot as plt
@@ -35,12 +39,12 @@ with tf.Session() as sess:
 # 使用with代码自动完成关闭动作, 即通过上下文管理器来管理这个会话
 # 当上下文退出时, 会话关闭, 资源释放完成
 
-sess = tf.Session()
-# 33行等价于(必须先指定会话，即sess = tf.Session())
+sess = tf.InteractiveSession()
+# 37行等价于(必须先指定会话，即sess = tf.Session())
 with sess.as_default():
     print(node3.eval())
 
-# 33，39行等价于(必须先指定会话，即sess = tf.Session())
+# 37，43行等价于(必须先指定会话，即sess = tf.Session())
 print(node3.eval(session=sess))
 
 sess.close()
