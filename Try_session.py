@@ -26,11 +26,19 @@ print(sess.run(node3))
 
 # 关闭session
 sess.close()
-
 '''
+
 # 也可将19行到27行换成
 with tf.Session() as sess:
     print(sess.run(node3))
-    
+
 # 使用with代码自动完成关闭动作, 即通过上下文管理器来管理这个会话
 # 当上下文退出时, 会话关闭, 资源释放完成
+
+sess = tf.Session()
+# 33行等价于(必须先指定会话，即sess = tf.Session())
+with sess.as_default():
+    print(node3.eval())
+
+# 33，39行等价于(必须先指定会话，即sess = tf.Session())
+print(node3.eval(session=sess))
