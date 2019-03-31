@@ -42,3 +42,5 @@ with sess.as_default():
 
 # 33，39行等价于(必须先指定会话，即sess = tf.Session())
 print(node3.eval(session=sess))
+
+sess.close()
